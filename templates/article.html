@@ -1,0 +1,123 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'header.html' %}
+{% include 'bootstrap/base.html' %}
+
+{% block title %} Welcome to {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+{% endblock %}
+
+<header style="{% block header %} background-image: url('{{ url_for('static', filename='assets/images/space.jpg') }}') {% endblock %}"></header>
+
+{% block content %}
+
+<div class="content">
+
+  <hr>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{article.img_url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading text-center">
+            <h1>{{article.title}}</h1>
+            <h2 class="subheading">{{article.price}}</h2>
+            <span class="meta">Posted by
+              <a href="#">{{article.author.name}}</a>
+              on {{article.date}}</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <div class="text-center">
+    <stripe-buy-button
+      buy-button-id="buy_btn_1Nth8gCE7CUcTtCeLgPrjogY"
+      publishable-key="pk_test_51NtGrNCE7CUcTtCePGZ8PU6PpV1dth3S3i0QFcOTuk1aP1jceAUg3MdLmYyMJfnT8o7gO2Cv6bGKofqlET8p5VLi00woinclWL"
+    >
+    </stripe-buy-button>
+  </div>
+
+
+  <p class="text-center"><img src="https://media.giphy.com/media/QJfCtrknxjcGPnRfMl/giphy.gif" style="width:19%;"></p>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+         {{ article.body|safe }}
+
+         <!-- If a user is admin then, they can see the deleted button -->
+         {% if current_user.is_admin%}
+            <div class="clearfix">
+                <a class="btn btn-outline-success btn-block" href="{{url_for('edit_article', article_id=article.id)}}">Edit Product</a>
+            </div>
+         {% endif %}
+
+         <hr>
+         <div class="mb-5">
+           <!-- Comments Area -->
+           <!-- Load the CKEditor -->
+             {{ ckeditor.load(pkg_type="full") }}
+           <!-- Configure it with the name of the form field from CommentForm -->
+             {{ ckeditor.config(name='comment_text') }}
+           <!-- Create the wtf quickform from CommentForm -->
+             {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'outline-success  btn-block'}) }}
+         </div>
+          <div class="col-lg-8 col-md-10 mx-auto comment">
+             {% for comment in article.comments: %}
+               <ul class="commentList">
+                 <li>
+                     <div class="commenterImage">
+                       <img src="{{ comment.comment_author.email | gravatar }}"/>
+                     </div>
+                     <!-- <div class="commenterImage">
+                       <img src="https://pbs.twimg.com/profile_images/744849215675838464/IH0FNIXk.jpg"/>
+                     </div>-->
+                     <div class="commentText">
+                       <p>{{ comment.text|safe }}</p>
+                         <span class="date sub-text">{{ comment.comment_author.name }} --> </span>
+                         <!-- If user id is 1 then they can see the deleted button -->
+                       {% if current_user.is_admin %}
+                       <a href="{{url_for('comment_to_delete', comment_id=comment.id) }}" style="color:red"> ✘</a>
+                       {% endif %}
+                     </div>
+                 </li>
+               </ul>
+             {% endfor %}
+
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </article>
+
+
+
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <div class="text-center">
+    <stripe-buy-button
+      buy-button-id="buy_btn_1NtkKrCE7CUcTtCe1WFeGTGS"
+      publishable-key="pk_test_51NtGrNCE7CUcTtCePGZ8PU6PpV1dth3S3i0QFcOTuk1aP1jceAUg3MdLmYyMJfnT8o7gO2Cv6bGKofqlET8p5VLi00woinclWL"
+    ></stripe-buy-button>
+  </div>
+
+
+
+</div>
+
+{% endblock %}
+
+{% block footer_ %} {% endblock %}
+
+<footer style="{% block footer %} background-image: url('{{ url_for('static', filename='assets/images/space.jpg') }}') {% endblock %}"></footer>

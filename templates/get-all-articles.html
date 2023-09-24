@@ -1,0 +1,288 @@
+{% extends 'header.html' %}
+{% include 'bootstrap/base.html' %}
+
+{% block title %} Welcome to {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/favicon1.ico') }}">
+{% endblock %}
+
+<section style="{% block header %} background-image: url('static/assets/images/space.jpg {% endblock %}"></section>
+
+{% block content %}
+
+<div class="content">
+
+  <hr>
+
+  <!-- Page Header -->
+  <header class="masthead section1" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading" style="color:#fff">
+            <h1>DBT's Online Products</h1>
+            <span class="subheading">A collection of Chacal musings.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <p class="text-center"><img src="https://media.giphy.com/media/QJfCtrknxjcGPnRfMl/giphy.gif" style="width:19%;"></p>
+
+  <!-- Add this button at the top of your template -->
+  <div class="text-center mb-3">
+      <span class="click-on">Click to See<br>🔥👇🏿🔥</span><br>
+    <button id="toggleProductListBtn" class="btn btn-outline-success">Product List</button>
+  </div>
+
+  <!-- Main Content -->
+  <div id="productListSection" class="container" style="display: none;">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for article in all_articles %}
+        <div class="post-preview">
+          <a href="{{ url_for('show_article', article_id=article.id) }}">
+            <h2 class="post-title">{{ article.title }}</h2>
+            <h3 class="post-subtitle">{{ article.price }}</h3>
+
+          </a>
+          <p class="post-meta">Posted by <a href="#">{{ article.author.name }}</a> on {{ article.date }}</p>
+
+          <button class="btn btn-primary cart-button" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            data-article-id="{{ article.id }}"
+            data-title="{{ article.title }}"
+            data-price="{{ article.price }}"
+            data-image="{{ article.img_url }}"
+            aria-controls="offcanvasWithBothOptions">
+              Cart
+          </button>
+
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Product Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Product details will be displayed here -->
+              <h2 id="productTitle" class="productTitle"></h2>
+              <h3 id="productPrice" class="productPrice"></h3>
+              <div id="success-message" class="alert alert-success text-center" style="display: none;">
+                  Payment successful! Thank you for your purchase.
+              </div>
+              <img id="productImage" src="" class="img-fluid" alt="Product Image">
+
+              <button id="decreaseQuantityBtn" class="btn btn-secondary" type="button">-</button>
+              <span id="quantity" class="quantity">1</span>
+              <button id="increaseQuantityBtn" class="btn btn-secondary" type="button">+</button>
+
+              <p class="total-price">Total Price: <span id="totalPrice" class="totalPrice">0.00</span></p>
+
+              <!-- Payment Form -->
+              <div class="container mt-4">
+                <h2>Payment Information</h2>
+                <h4>Credit or debit card</h4>
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <div class="">
+                        <button id="redirectButton" class="btn btn-primary" href="https://buy.stripe.com/test_28og0u7BB4mKbAsbIJ" target="_blank">Pay Now ¡!¡</button>
+                    </div>
+<!--
+                    <form id="payment-form">
+
+                      <input type="hidden" id="selected-article-id" name="selected-article-id" value="">
+
+                      <div class="form-group">
+                        <label for="card-element">Credit or debit card</label>
+                        <div id="card-element"></div>
+                        <div id="card-errors" role="alert"></div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mb-3">Pay Now</button>
+                    </form>
+-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Payment Form -->
+
+          <!-- If the user is an admin, show the deleted button -->
+          {% if current_user.is_admin %}
+          <div class="admin-controls">
+            <a href="{{ url_for('delete_article', article_id=article.id) }}" class="btn btn-danger btn-sm">Delete</a>
+          </div>
+          {% endif %}
+
+        </div>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div>
+      <div>
+        <!-- New Post -->
+        <!-- If a user is admin, then they can see the deleted button -->
+        {% if current_user.is_admin %}
+        <div class="clearfix text-center">
+            <a class="btn btn-outline-success" href="{{url_for('add_new_article')}}">
+              Create A New Article ¡!¡
+            </a>
+          <hr>
+        </div>
+        {% endif %}
+      </div>
+  </div>
+
+  <div class="section1" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">
+      <div class="text-center">
+          <h3 class="sub-title">Scroll Down To Get<br><span class="">DBT - LAT€ST PRODUCT</span><br>At Your DISP😇SITI😎NS ¡!¡</h3>
+      </div>
+  </div>
+
+  <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        {% for image in all_articles %}
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ loop.index0 }}" class="{{ 'active' if loop.index == 1 else '' }} carousel-btn" aria-label="Slide {{ loop.index }}"></button>
+        {% endfor %}
+      </div>
+      <div class="carousel-inner">
+        {% for image in all_articles %}
+            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                <img src="{{ image.img_url }}" class="d-block w-100 carousel-img" alt="Image">
+                <a href="{{ url_for('show_article', article_id=image.id) }}">
+                    <div class="carousel-caption">
+                        <h5>{{ image.title }}</h5>
+                        <p class="p-carousel">{{ image.price }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+
+  <hr>
+
+  <div class="container-fluid ml-0 row product-img">
+      {% for image in all_articles %}
+      <div class="col-4 col-md-2">
+        <a href="{{ url_for('show_article', article_id=image.id) }}">
+            <img src="{{ image.img_url }}" class="img-fluid" alt="Image">
+            <p class="product-description mb-3">{{ image.title }}<br><span style="color:gray">{{ image.price }}</span></p>
+        </a>
+      </div>
+      {% endfor %}
+  </div>
+
+  <hr>
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <div class="text-center">
+    <stripe-buy-button
+      buy-button-id="buy_btn_1NtkKrCE7CUcTtCe1WFeGTGS"
+      publishable-key="pk_test_51NtGrNCE7CUcTtCePGZ8PU6PpV1dth3S3i0QFcOTuk1aP1jceAUg3MdLmYyMJfnT8o7gO2Cv6bGKofqlET8p5VLi00woinclWL"
+    ></stripe-buy-button>
+  </div>
+
+<!--
+  <script>
+    // Attach an event listener to the "Cart" buttons within the off-canvas menus
+    var cartButtons = document.querySelectorAll('.cart-button');
+
+    cartButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var articleId = button.getAttribute('data-article-id');
+        var articleTitle = button.getAttribute('data-article-title');
+        var articlePrice = button.getAttribute('data-article-price');
+        var articleImage = button.getAttribute('data-article-image');
+
+        // Set the selected article details in the payment form
+        document.getElementById('article-title').textContent = articleTitle;
+        document.getElementById('article-price').textContent = articlePrice;
+        document.getElementById('article-image').src = articleImage;
+
+        // You can also store the selected article ID in a hidden input field
+        // for later use when submitting the payment form
+        document.getElementById('selected-article-id').value = articleId;
+      });
+    });
+
+    // Ensure your publishable key is set here
+    var stripe = Stripe('{{ stripe_publishable_key }}');
+    // Create an instance of Elements
+    var elements = stripe.elements();
+    // Create an instance of the card Element
+    var card = elements.create('card');
+    // Add an instance of the card Element into the `card-element` div
+    card.mount('#card-element');
+
+    // Handle form submission
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      // Disable the submit button to prevent multiple submissions
+      form.querySelector('button').disabled = true;
+      // Create a PaymentMethod using the card Element
+      stripe.createPaymentMethod({
+        type: 'card',
+        card: card,
+      }).then(function (result) {
+        if (result.error) {
+          // Show any errors that occur in the form
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+          // Enable the submit button
+          form.querySelector('button').disabled = false;
+        } else {
+          // Send the PaymentMethod ID to your server
+          fetch('/pay/' + document.getElementById('selected-article-id').value, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ paymentMethodId: result.paymentMethod.id }),
+          }).then(function (response) {
+            return response.json();
+          }).then(function (data) {
+            // Handle server response (e.g., redirect to success page)
+            if (data.success) {
+              // Redirect to a success page
+              window.location.href = '/success';
+            } else {
+              // Display an error message
+              var errorElement = document.getElementById('card-errors');
+              errorElement.textContent = data.error;
+              // Enable the submit button
+              form.querySelector('button').disabled = false;
+            }
+          });
+        }
+      });
+    });
+  </script>
+-->
+
+</div>
+
+{% endblock %}
+
+{% block footer_ %} {% endblock %}
+
+<footer style="{% block footer %} background-image: url('static/assets/images/space.jpg {% endblock %}"></footer>

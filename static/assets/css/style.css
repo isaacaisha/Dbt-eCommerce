@@ -1,0 +1,504 @@
+#content {
+    padding-top: 1.9rem;
+}
+
+body > header {
+    background-image: url('../images/space.jpg');
+    background-size: cover; /* This will scale the image to cover the entire element */
+    background-position: center center; /* This centers the image both horizontally and vertically */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    /* You can also set a fixed height if needed */
+    /*height: 179px; /* Adjust the height as per your design */
+}
+
+h1 {
+    margin: 0;
+}
+
+h5 {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-display: swap;
+    font-size: 1.9rem;
+}
+
+p, body > div.content > div.container-fluid.ml-0.row.product-img > div > a > p {
+    color: #9126E8;
+    margin: 0;
+}
+
+label {
+    color: #B5D3B9;
+    font-size: 1.5rem;
+}
+
+input {
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.5rem;
+    height: 1.9rem;
+    padding: 0.3rem;
+    width: 17rem;
+}
+
+hr {
+    border: 0.05rem solid #1295FA;
+    margin: 1rem auto;
+    width: 73%;
+}
+
+textarea {
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    text-align: center;
+    width: 23rem;
+}
+
+a {text-decoration:None}
+a:hover {text-decoration:None}
+
+.jumbotron {
+  animation: color-change 10s linear infinite;
+  background-color: #47FFAC;
+  border: 0.1rem solid #1295FA;
+  margin: 1rem 0;
+}
+
+@keyframes color-change {
+  25% {
+    background-color: #FC5378;
+  }
+
+  50% {
+    background-color: #4044E6;
+  }
+
+  100% {
+    background-color: #47FFAC;
+  }
+}
+
+#mainNav > div > a,
+#navbarSupportedContent > ul,
+#navbarSupportedContent > form > button,
+#navbarSupportedContent > form > input {
+    /*font-family: 'Sacramento', sans-serif;
+    font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Cardo';
+    font-display: swap;
+    font-size: 1.5rem;
+}
+
+.navbar-brand {
+    margin-right: 163px; /* Adjust the margin value as needed */
+    padding: 1.09rem;
+}
+
+#navbarSupportedContent > ul > li.nav-item.dropdown > ul  a {
+    background-image: url('../images/space.jpg');
+    color: #fff;
+}
+
+button.navbar-toggler, .nav-link {
+    color: #fff;
+}
+
+button.navbar-toggler {
+    border: 0.01rem solid #fff;
+    color: #fff;
+}
+
+.navbar-brand:hover,
+button.navbar-toggler:hover,
+.nav-link:hover,
+#navbarSupportedContent > ul > li:nth-child(1) > a:hover {
+    color: #198754;
+}
+
+#navbarSupportedContent > form > input {
+    background-color: #fff;
+    color: #9126E8;
+    margin: auto;
+}
+
+.dropdown-menu {
+    width: 50%;
+}
+
+.title {
+    background-color: #fff;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.3rem;
+    color: #9126E8;
+    font-family: 'Cardo';
+    font-weight: 900;
+    font-size: 3.07rem;
+    text-decoration: underline;
+}
+
+header.masthead {
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: #868e96;
+  background-attachment: scroll;
+  position: relative;
+  background-size: cover;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+header.masthead .page-heading,
+header.masthead .post-heading,
+header.masthead .site-heading {
+  font-family: 'Merriweather', sans-serif;
+  padding: 199px 0 91px;
+  color: white;
+}
+
+header.masthead .site-heading, .section1 {
+  padding: 9px 0 3px;
+}
+
+.section1 {
+  padding: 9px 0 3px;
+}
+
+body > div.content > header {
+    margin-bottom: 1rem;;
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .page-heading,
+  header.masthead .post-heading,
+  header.masthead .site-heading {
+    padding: 200px 0;
+  }
+}
+
+header.masthead .page-heading,
+header.masthead .site-heading {
+  text-align: center;
+}
+
+header.masthead .page-heading h1,
+header.masthead .site-heading h1 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.1;
+  display: block;
+  margin: 10px 0 0;
+  /*font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: ''
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .page-heading h1,
+  header.masthead .site-heading h1 {
+    font-size: 80px;
+  }
+}
+
+header.masthead .post-heading h1 {
+  font-size: 35px;
+}
+
+header.masthead .post-heading .meta,
+header.masthead .post-heading .subheading {
+  line-height: 1.1;
+  display: block;
+}
+
+header.masthead .post-heading .subheading {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0 30px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header.masthead .post-heading .meta {
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  font-family: 'Lora', 'Times New Roman', serif;
+}
+
+header.masthead .post-heading .meta a {
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .post-heading h1 {
+    font-size: 55px;
+  }
+  header.masthead .post-heading .subheading {
+    font-size: 30px;
+  }
+}
+
+.sub-title {
+    color:#fff;
+    font-family: 'Merriweather', sans-serif;
+    /*font-family: 'Sacramento', sans-serif;
+    font-family: 'Montserrat', sans-serif;*/
+    font-display: swap;
+    font-size: 1.7rem;
+    font-weight: 900;
+    margin: 1.5rem auto;
+    padding: 0.3rem;
+}
+
+.click-on {
+    color: #198754;
+}
+
+.post-preview > a {
+  color: #212529;
+}
+
+.post-preview > a:focus, .post-preview > a:hover {
+  text-decoration: none;
+  color: #0085A1;
+}
+
+.post-preview > a > .post-title {
+  font-size: 19px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.post-preview > a > .post-subtitle {
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+.post-preview > .post-meta {
+  font-size: 11px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
+
+.post-preview > .post-meta > a {
+  text-decoration: none;
+  color: #212529;
+}
+
+.post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+  text-decoration: underline;
+  color: #0085A1;
+}
+
+#carouselExampleCaptions {
+    background-image: url('../images/space.jpg');
+    background-size: cover; /* This will scale the image to cover the entire element */
+    background-position: center center; /* This centers the image both horizontally and vertically */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    /* You can also set a fixed height if needed */
+    /*height: 400px; /* Adjust the height as per your design */
+    margin-top: 1.9rem;
+    padding: 5rem;
+}
+
+span.carousel-control-prev-icon, span.carousel-control-next-icon {
+    background-color: green;
+    border: 0.1rem solid #9126E8;
+    border-radius: 0.5rem;
+}
+
+#carouselExampleCaptions > div.carousel-inner img {
+    border: 0.1rem solid #9126E8;
+    border-radius: 0.5rem;
+}
+
+#carouselExampleCaptions > div {
+    max-width: 73%; /* Adjust the percentage as needed to control image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0.5rem auto; /* Center the image horizontally */
+}
+
+div.carousel-indicators button.carousel-btn {
+    background-color: #9126E8;
+    border: 0.09rem solid #9126E8;
+    border-radius: 0.5rem;
+}
+
+#carouselExampleCaptions > div.carousel-inner > div > a > div > p {
+    color: #fff;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-display: swap;
+    font-size: 1.5rem;
+}
+
+img {
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+
+.product-description {
+    color: #4044E6;
+    font-family: 'Montserrat', sans-serif;
+    font-display: swap;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.product-description-mb {
+    margin-bottom: 1rem;
+}
+
+.product-description-color {
+    color: None;
+}
+
+#content > div > div > div > h1 {
+    background-color: #fff;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.3rem;
+    color: #9126E8;
+    font-family: 'Cardo';
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+body > div.content > div.text-center > ul > li {
+    font-size: 1.9rem;
+}
+
+.success-message {
+    color: green;
+}
+
+input#submit,
+body > div.content > article > div > div > div > div.clearfix > a {
+    padding: 7px 0 19px;
+}
+
+#toggleProductListBtn,
+body > div.content > div:nth-child(6) > div > div > a,
+body > div.content > article > div > div > div > div.clearfix > a {
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+body > div.content > article > div > div > div > div.col-lg-8.col-md-10.mx-auto.comment > ul > li > div.commenterImage > img{
+    width: 9%;
+}
+
+.total-price {
+
+    margin: 1rem 0 0;
+}
+
+#offcanvasWithBothOptionsLabel {
+    color: #9126E8;
+}
+#decreaseQuantityBtn {
+    margin: 1rem 0 1rem 1rem ;
+}
+
+.totalPrice {
+    color: #000;
+    font-family: 'Lora', 'Times New Roman', serif;
+}
+
+#offcanvasWithBothOptions {
+    height: 91%;
+    width: 55%;
+}
+
+#offcanvasWithBothOptions > div.offcanvas-body > div.container.mt-4 {
+    padding: 0;
+}
+
+.productTitle, .productPrice, #offcanvasWithBothOptions > div.offcanvas-body > p:nth-child(7) {
+    color: gray;
+}
+
+.quantity {
+    padding: 0.3rem;
+}
+
+#footer > footer {
+    background-image: url('../images/space.jpg');
+    background-size: cover; /* This will scale the image to cover the entire element */
+    background-position: center center; /* This centers the image both horizontally and vertically */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    /* You can also set a fixed height if needed
+    height: 199px; /* Adjust the height as per your design */
+}
+
+.footer-title {
+    color:#fff;
+    font-family: 'Merriweather', sans-serif;
+    font-display: swap;
+    font-size: 1.7rem;
+    font-weight: 900;
+    padding: 0.3rem;
+}
+
+.dbt-span-footer {
+    background-color: #fff;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.5rem;
+    color: #9126E8;
+    font-size: 1.09rem;
+    padding: 0.19rem;
+}
+
+footer {
+    padding: 0.2rem;
+    text-align: center;
+}
+
+#footer > footer > div > div > div > ul {
+    margin-top: 0.37rem;
+}
+
+.fa-inverse {
+    background-color: #9126E8;
+    border: 0.1rem solid #AEFAFC;
+    border-radius: 55%;
+    color: #fff;
+}
+
+.fa-inverse:hover {
+    color: #6ABFA6;
+    width: 3.7rem;
+}
+
+.fas {
+    color: transparent !important;
+}
+
+#footer > footer > div > div > div > div {
+    margin: 0 auto 1rem;
+    width: 85%;
+}
+
+.copyright {
+    background-color: #fff;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.3rem;
+    color: #9A30F3;
+    font-family: 'Cardo';
+    font-size: 1.3rem;
+    padding: 0.3rem 2.7rem;
+    text-decoration: None;
+}
+
+# --------------------------------------------------- 🔥👌🏿💚😇❤️🔥 ---------------------------------------------------#

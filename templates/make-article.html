@@ -1,0 +1,58 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends 'header.html' %}
+{% include 'bootstrap/base.html' %}
+
+{% block title %} Welcome to {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/favicon3.ico') }}">
+{% endblock %}
+
+<header style="{% block header %} background-image: url('{{ url_for('static', filename='assets/images/space.jpg') }}') {% endblock %}"></header>
+
+{% block content %}
+
+<div class="content">
+
+  <hr>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/images/logo3.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            {% if is_edit_article: %}
+            <h1 style="color:gold">Edit Article</h1>
+            {% else: %}
+            <h1 style="color:green;">New Article</h1>
+            {% endif %}
+            <span class="subheading">You're going to make a great Article ¡!¡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ ckeditor.load(pkg_type="full") }}
+        {{ ckeditor.config(name='body') }}
+        {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'outline-success  btn-block'}) }}
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+</div>
+
+{% endblock %}
+
+{% block footer_ %} {% endblock %}
+
+<footer style="{% block footer %} background-image: url('{{ url_for('static', filename='assets/images/space.jpg') }}') {% endblock %}"></footer>
