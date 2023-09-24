@@ -4,16 +4,18 @@ Python 3.6 or newer required.
 """
 import json
 import os
+from dotenv import load_dotenv
 import stripe
 import requests
 from flask import Flask, render_template, jsonify, request, send_file
 
+# Load environment variables from .env file
+load_dotenv()
+
 app = Flask(__name__, static_folder='public', static_url_path='/public', template_folder='templates')
 
-
 # This is your test secret API key.
-stripe.api_key = \
-    'sk_test_51NtGrNCE7CUcTtCeMwpklwKcskF8oJURA1HbZ7YxoPwsCIPaGRSdNcDkR68VTnntxbkLxQtPNOTxgeDudvFL4e3t001bZxAGZn'
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 
 @app.route('/')
